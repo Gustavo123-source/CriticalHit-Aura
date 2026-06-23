@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Hit</title>
+     <script>
+        if (localStorage.getItem("tema") === "escuro") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header> <!--header-->
+
+    <div class="informações">
+        <div id="logo"> <!--div-->
+            <a href="inicio.html">
+                <img src="fotos/Sem nome (1920 x 540 px).png" width="400px" id="logo">
+            </a>
+        </div>
+        <div>
+            <input type="text" id="pesquisar" placeholder="Pesquisar...">
+        </div>
+
+        <div class="inf">
+            <h4 class="Tag">Redes Sociais</h4>
+            <a href="https://www.instagram.com/critical.hit2026/" class="a"> Instagram: @critical.hit2026</a><br>
+            <a href="" class="a"> Twitter: @twitter</a>
+            <p class="a">criticalhit.thesite2026@gmail.com</p>
+        </div>
+
+        <div class="inf" id="nosApoie">
+            <h4 class="Tag">Nos apoie!</h4>
+            <a href="" class="a">Feedback</a> <br>
+            <a href="https://buymeacoffee.com/criticalhio" class="a">Buy me a coffe.</a>
+        </div>
+    </div>
+    <div id="navegação">
+        <nav>
+            <a href="inicio.html" class="aDoNav">Explorar</a>
+            <a href="enviar.html" class="aDoNav">Enviar</a>
+            <a href="perfil.html" class="aDoNav">Perfil</a>
+            <a href="Settings.html" class="aDoNav">Configurações</a>
+        </nav>
+    </div>
+</header>
+  <section>
+ <br>
+    <h2 style="text-align: center;" class="tagsDoTopo">Configurações</h2>
+<center>
+    <div class="opçõesCONF">
+        <a href="sobre.html" style="text-decoration:none; color:#84aec5">
+            <img src="fotos/folha.png" width="16%" class="fotoSettings">
+            <h2 class="wordSettings">Sobre  &rightarrow;</h2>
+        </a>
+    </div>
+
+    </div class="opçõesCONF">
+        <a href="adm.html" style="text-decoration:none; color:#84aec5">
+            <img src="fotos/coroa.png" width="16%" class="fotoSettings">
+            <h2 class="wordSettings">Admin  &rightarrow;</h2>
+        </a>
+    </div>
+</center>
+  </section>
+  <br><br>
+   <button type="button" id="delConta" class="excluir" onclick="excluirConta()" >Excluir Conta</button>
+    <button type="button" id="delJogos" class="excluir" onclick="excluirJogo()">Excluir Jogos</button>
+    <input type="text" id="delInput" placeholder="Nome do jogo...">
+    <script src="script.js"></script>
+</body>
+</html>

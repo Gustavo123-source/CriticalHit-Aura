@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Hit</title>
+     <script>
+        if (localStorage.getItem("tema") === "escuro") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cloudflare.com" async defer></script>
+</head>
+    <header> <!--header-->
+
+    <div class="informações">
+        <div id="logo"> <!--div-->
+            <a href="inicio.html">
+                <img src="fotos/Sem nome (1920 x 540 px).png" width="400px" id="logo">
+            </a>
+        </div>
+        <div>
+            <input type="text" id="pesquisar" placeholder="Pesquisar...">
+        </div>
+
+        <div class="inf">
+            <h4 class="Tag">Redes Sociais</h4>
+            <a href="https://www.instagram.com/critical.hit2026/" class="a"> Instagram: @critical.hit2026</a><br>
+            <a href="" class="a"> Twitter: @twitter</a>
+            <p class="a">criticalhit.thesite2026@gmail.com</p>
+        </div>
+
+        <div class="inf" id="nosApoie">
+            <h4 class="Tag">Nos apoie!</h4>
+            <a href="" class="a">Feedback</a> <br>
+            <a href="https://buymeacoffee.com/criticalhio" class="a">Buy me a coffe.</a>
+        </div>
+    </div>
+    <div id="navegação">
+        <nav>
+            <a href="inicio.html" class="aDoNav">Explorar</a>
+            <a href="enviar.html" class="aDoNav">Enviar</a>
+            <a href="perfil.html" class="aDoNav">Perfil</a>
+            <a href="Settings.html" class="aDoNav">Configurações</a>
+        </nav>
+    </div>
+</header>
+<body>
+    <center>
+        <h2 class="tagsDoTopo">Envie seus jogos:</h2>
+    </center>
+    <center>
+    <section id="formEnviar">
+        <form onsubmit="JogoPost(event)">
+            <div class="formJG">
+                <label for="titulo" class="labelJG">Nome do seu jogo:</label>
+                <input type="text" id="titulo" class="inputJG">
+            </div>
+            <br><br>
+            <div class="formJG">
+                <label for="genero" class="labelJG">Diga a descrição do seu jogo:</label>
+                <textarea rows="10" id="genero" class="inputJG"></textarea>
+            </div>
+            <br><br>
+            <div class="formJG">
+                <label for="genero" class="labelJG">Informe a url do seu jogo:</label>
+                <input type="url" id="urljogo" class="inputJG">
+                            </div>
+            <br><br>
+            <div class="formJG">
+                <label for="genero" class="labelJG">Coloque a capa do seu jogo:</label>
+                <input type="url" id="capa" class="inputJG">
+            </div>
+            <br><br>
+            <center>
+                <button type="submit" id="idPublicar">Publicar</button>
+            </center>
+            <br><br>
+        </form>
+    </section>
+    </center>
+    <script src="script.js"></script>
+</body>
+</html>

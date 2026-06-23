@@ -1,0 +1,637 @@
+
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+
+    --nav-color: #285171;
+    --secondary-color: #33658A;
+    --accent-color: #84aec5;
+
+    --card-bg: aliceblue;
+    --card-text: #285171;
+    --border-color: #285171;
+
+    --input-bg: #ffffff;
+    --input-text: #333333;
+
+    --info-bg: #33658A;
+    --info-card-bg: #ffffff;
+    --info-text: #ffffff;
+
+    --btn-bg: #285171;
+    --btn-text: #ffffff;
+  --Tag-color: #84aec5;
+    --container-bg: #ffffff;
+    transition: all 0.5s;
+}
+
+html.dark-mode {
+
+
+  --Tag-color: #ffffff;
+ --bg-color: #1f3347;
+    --text-color: #e8f1f7;
+
+    --nav-color: #264c69;
+    --secondary-color: #25577b;
+    --accent-color: #84aec5;
+
+    --card-bg: #22384b;
+    --card-text: #e8f1f7;
+    --border-color: #84aec5;
+
+    --input-bg: #1c2d3a;
+    --input-text: #ffffff;
+
+    --info-bg: #15364d;
+    --info-card-bg: #1c2d3a;
+    --info-text: #e8f1f7;
+
+      --btn-bg: #84aec5;
+    --btn-text: #152331;
+
+     --container-bg: #22384b;
+     transition: all 0.5s;
+}
+
+body {
+background-color: var(--bg-color);
+    color: var(--text-color);
+ font-family: f3;
+ margin: 0;
+    padding: 0;
+transition: all 0.5s;
+
+}  
+
+/* ==========================================================================
+   1. FONTES & DECLARAÇÕES
+   ========================================================================== */
+@font-face {
+    font-family: f1;
+    src: url('ari_w9500/ari-w9500-bold.ttf');
+}
+
+@font-face {
+    font-family: f2;
+    src: url('daydream_3/Daydream\ DEMO.otf');
+}
+
+@font-face {
+    font-family: f3;
+    src: url('cooperbits/CooperBits.ttf');
+}
+
+@font-face {
+    font-family: f4;
+    src: url(upheaval_pro/UpheavalPro.otf);
+}
+
+/* ==========================================================================
+   2. CONFIGURAÇÕES GERAIS (RESET & BASE)
+   ========================================================================== */
+
+
+header {
+    font-size: larger;
+}
+
+h3 {
+    font-family: f1;
+}
+
+h4 {
+    font-family: f2;
+}
+
+input, select, textarea {
+        font-family: f3;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
+::placeholder {
+    color: #84aec5;
+}
+
+/* ==========================================================================
+   3. LINKS & NAVEGAÇÃO (NAV BAR)
+   ========================================================================== */
+nav {
+    display: flex;
+    background-color: var(--nav-color);
+    justify-content: space-around;
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    padding: 0.5% 1%;
+}
+
+.aDoNav {
+    text-decoration: none;
+    color: hsl(0, 0%, 100%);
+    position : relative;
+    width: max-content;
+    transition: color 0.3s ease;
+}
+
+.aDoNav::after {
+    content: '';
+    position: absolute;
+    background-color: #202a52;
+    height: 3px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+      transform: scaleX(0);
+    transform-origin: center;
+    transition: 300ms ease;
+}
+.aDoNav:hover::after {
+   transform: scaleX(1);
+}
+
+
+
+.aDoNav:hover{
+    color: #5399be;
+    
+}
+
+/* Links Padrão */
+.a, .enterL {
+    color: #8ebed7;
+    text-decoration: none;
+    transition: color 0.5s ease;
+}
+
+.a:hover, .enterL:hover {
+    color: rgb(0, 102, 255);
+}
+
+/* ==========================================================================
+   4. COMPONENTES / CARDS DE JOGOS
+   ========================================================================== */
+#paginaDeJogos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Cria um espaçamento consistente entre os cards */
+    padding: 20px;
+}
+
+.Tag {
+    color: var(--Tag-color);
+}
+
+
+
+.aDosJogos {
+    text-decoration: none;
+    color: var(--card-text);
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    padding: 1%;
+    border-radius: 15px;
+    width: 15%;
+    min-width: 150px; /* Garante que não fique espremido em telas menores */
+    transition: transform 0.3s ease;
+}
+
+.aDosJogos:hover {
+    transform: scale(1.05);
+}
+
+.fotoDoJogo {
+    width: 100%;
+    border-radius: 8px; /* Deixa as bordas da foto arredondadas para combinar */
+    display: block;
+}
+
+/* ==========================================================================
+   5. BOTÕES
+   ========================================================================== */
+/* Estilo base reaproveitável para os botões de Início e Cadastro */
+#Binicio, #Bcadastrar {
+    background-color:  #33658A;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    padding: 2%;
+    font-family: f1;
+    transition: transform 0.15s ease;
+    cursor: pointer;
+}
+
+#Binicio:hover, #Bcadastrar:hover {
+    transform: scale(1.2) translateY(-3px);
+}
+
+/* Outros Botões */
+#botaoconfp {
+    background-color: #33658A;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-family: f1;
+    margin-left: 0.5%;
+    padding: 1%;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+
+#botaoconfp:hover {
+    transform: scale(1.1);
+}
+
+#botaoat, #idPublicar {
+    background-color: #33658A;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-family: f1;
+    padding: 1%;
+    transition: 100ms;
+    cursor: pointer;
+}
+
+#idPublicar {
+    background-color: #285171;
+}
+
+#botaoat:hover, #idPublicar:hover {
+    transform: scale(1.1)
+    translateY(-10px)
+}
+
+/* ==========================================================================
+   6. FORMULÁRIOS & INPUTS
+   ========================================================================== */
+#formLogin, #formCadas {
+    display: flex;
+    flex-direction: column; /* Garante que os itens fiquem um embaixo do outro se necessário */
+     border: solid 2px var(--border-color);
+    margin: 20px auto; /* Centraliza o formulário na tela */
+    width: 20%;        /* Define uma largura ideal */
+    min-width: 280px;  /* Não deixa quebrar em telas pequenas */
+    border-radius: 10px;
+    padding: 20px;
+    justify-content: center;
+}
+
+#pesquisar {
+    font-family: f1;
+    border: #8ebed7 solid 2px;
+    border-radius: 25px;
+    padding: 10px 15px;
+    padding-left: 15px;
+    margin-top: 7%;
+    margin-right: 4%;
+    width: 100%;       
+    max-width: 350px; 
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+#pesquisar:focus {
+  border-color: #3d508e;
+  outline: none;
+  transform: scale(1.025);
+}
+
+.inputLogin:focus {
+    transform: scale(1.025);
+     transition: transform 0.3s ease;
+}
+
+.inputLogin {
+     transition:transform 0.5s ease;
+}
+
+
+
+#nomeInt {
+    font-size: large;
+    border-radius: 20px;
+    padding: 3%;
+    margin-bottom: 1%;
+    width: 100%;       /* Substituído o padding-right de 500px por largura fluida */
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+#senhaADM {
+    background-color: #84aec5;
+    border: rgb(255, 255, 255) 1px solid;
+    border-radius: 15px;
+    padding: 2% 5%;
+
+}
+
+/* Formulário de Jogos (JG) */
+.formJG {
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
+}
+
+.inputJG{
+    padding: 1%;
+    border-radius: 15px;
+    max-width:50%;
+    margin-left:24%;
+    font-family: f1;
+    border:2px solid;
+}
+textarea {
+    padding: 1%;
+    border-radius: 15px;
+    max-width:50%;
+    margin-left:24%;
+    font-family: f1;
+    border:2px solid;
+ }
+
+.inputJG:focus {
+  border-color: #c5d2ff;
+    outline: none;
+}
+
+.labelJG {
+    font-size:x-large;
+    font-family:f4;
+    margin:1%;
+    padding:1%;
+    text-decoration:underline;
+}
+
+.wordSettings {
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+/* ==========================================================================
+   7. LAYOUTS, FLEXBOX & ESTRUTURAS SECUNDÁRIAS
+   ========================================================================== */
+
+
+.tagsDoTopo {
+background-color: var(--secondary-color);
+    color: white;
+    border-radius: 15px;
+    padding: 1%;
+    margin: 1%;
+    letter-spacing: 2px;
+    font-family: f4;
+}
+
+.informações {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--info-bg);
+    padding: 0.25%;
+    color: var(--info-text);
+}
+
+.inf {
+    font-size: x-small;
+      background-color: var(--info-card-bg);
+    border: #8ebed7 solid 2px;
+    border-radius: 15px;
+    padding: 0.25% 0.75%;
+    margin: 0.5%;
+}
+
+
+
+#telaDoADM {
+    display: flex;
+    justify-content: center;
+    background-color: var(--nav-color);
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 15px;
+    margin: 15% auto 0 auto;
+    width: 20%;
+    min-width: 250px;
+    padding: 3%;
+    
+    transition: transform 0.5s ease;
+}
+
+#telaDoADM:hover {
+    transform: scale(4);
+}
+
+/* Ajustes Finais de Elementos Únicos */
+#minhaimagem {
+    border: solid 2px black;
+}
+
+#logo {
+    margin-left: 0.2%;
+    transition: filter 0.3s ease;
+}
+
+#logo:hover {
+    filter: drop-shadow(0 0 4px #6b899b);
+}
+
+#nosApoie {
+    margin-right: 10%;
+    padding-bottom:20px;
+}
+
+#Sobre1 {
+    margin-left: 2%;
+}
+
+
+#nomeConf {
+    margin-bottom: 0.7%;
+}
+
+#arquivo {
+    text-decoration: none;
+}
+       
+.fotoSettings {
+   border: solid 2px var(--border-color);
+    padding: 1%;
+    transition: transform 0.3s ease;
+}
+.fotoSettings:hover {
+    transform: scale(1.05);
+}
+
+.wordSettings {
+    transition: color 0.3s ease;
+}
+.wordSettings:hover {
+    color: #84aec5;
+ }
+
+ .TextSobre {
+    color: var(--text-color);
+    margin-top: 1%;
+ }
+
+
+
+
+
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: #499af6;
+    transition: background .5s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dark-mode .container {
+    background-color: #1b1b1b;
+} 
+
+#toggle-btn {
+    width: 70px;       
+    height: 34px;       
+    border: 2px solid var(--text-color);
+    background-color: transparent;
+    border-radius: 60px;
+    position: relative;
+    cursor: pointer;
+    margin-left: 2%; 
+     transition: background-color .5s;
+  
+}
+
+#toggle-btn::before {
+    content: "";
+    position: absolute;
+    width: 26px;       
+    height: 26px;      
+    background-color: var(--text-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 3px;           
+    transform: translateY(-50%);
+    transition: left .5s; 
+}
+
+
+.dark-mode #toggle-btn::before {
+    left: 37px;       
+}
+
+.botaoEditar{
+    background-color: #33658A;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-family: f1;
+    padding-bottom: 3px;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+.botaoEditar:hover {
+    transform: scale(1.1);
+}
+
+#TermosB{
+    color: var(--color-text);
+}
+
+.Bvoltar{
+    color: var(--color-text);
+}
+.header{
+    position: sticky;
+    top: 0;
+}
+
+#secTermos {
+    display:flex;
+    flex-direction:column;
+    max-width: 30%;
+    border:3px solid #1f3347;
+    border-radius:15px;
+    padding:15px;
+    color:white;
+    background-color:#285171;
+    font-family:f1;
+}
+.tituloDosTermos {
+    text-decoration:underline;
+    color:#8ebed7;
+}
+.fotosSamurai{
+    width:50%
+}
+#secSamurais{
+    display:flex;
+    flex-direction:row;
+    position:fixed;
+    margin-bottom:135%;
+}
+
+#formEnviar {
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.pDestacado {
+    margin: bottom 0.2%;
+    text-decoration:underline;
+    color:#3b77a2;
+}
+
+#configItens {
+    display:flex;
+    flex-direction:row;
+}
+
+#idCapaJogo{
+    text-align: center;
+}
+
+.excluir {
+    background-color:#22384b;
+    padding:1%;
+    color:white;
+    font-family:f1;
+    border:#1b1b1b solid 2px;
+    transition:all 0.2s;
+    margin-left:0.5%;
+}
+.excluir:hover{
+    background-color:#2c1414;
+    color:rgb(255, 0, 0);
+    border:#101010 solid 2px;
+    animation: tremer 0.2s infinite;
+    transform:scale(1.02);
+    color-scheme: var(--btn-bg);}
+
+@keyframes tremer {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-4px) rotate(-1deg); }
+  30% { transform: translateZ(-2px) rotate -1deg}
+  40% { transform: translateX(4px) rotate(1deg); }
+  50% { transform: translateZ(2px) rotate (1deg)}
+  60% { transform: translateX(-2px) rotate(-1deg); }
+  70% { transform: translateZ(2px) rotate (1deg)};
+  80% { transform: translateX(2px) rotate(1deg); }
+  90% { transform: translateZ(-2px) rotate -1deg}
+  100% { transform: translateX(0); }
+}
+
+
+
+#delInput {
+    padding:1%;
+    border-radius:15px;
+    margin-bottom:0.5%;
+}

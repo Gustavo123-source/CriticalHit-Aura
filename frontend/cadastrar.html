@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Hit</title>
+     <script>
+        if (localStorage.getItem("tema") === "escuro") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <header> <!--header-->
+        <div class="informações">
+            <div id="logo"> <!--div-->
+                    <img src="fotos/Sem nome (1920 x 540 px).png" width="400px" id="logo">
+            </div>
+        </div>
+    </header>
+
+    <section id="formCadas" style="margin-top: 8%;">
+    
+        <h2 class="TextSobre">Começe a usar CriticalHit!</h2>
+        <p class="TextSobre">Cadastra-se para se tornar parte da cominidade nossa!</p>
+            <form  onsubmit="cadastro(event)">
+                <br>
+                    <label for="email" class="TextSobre">Email</label><br>
+                    <input type="email"  placeholder="Email..." id="email" class="inputLogin">
+                <br>
+                <br>
+                    <label for="Senha" class="TextSobre">Senha</label><br>
+                    <input type="password"  placeholder="Senha..." id="senha" class="inputLogin"> <input  style="position: absolute;" type="checkbox" onclick="senha.type = this.checked ? 'text' : 'password'">
+                <br>
+                <br>
+               <label for="Senha" class="TextSobre">Repita a Senha</label><br>
+                    <input type="password"  placeholder="Senha..." id="senhaAgain" class="inputLogin" > <input  style="position: absolute;" type="checkbox" onclick="senhaAgain.type = this.checked ? 'text' : 'password'">
+                <br>
+                <br>
+                    <label for="Data" class="TextSobre">Data de Nascimento</label><br>
+                    <input type="date"  id="nascimento" class="inputLogin">
+                <br>
+                <br>
+                    <label for="Nome_Usuário" class="TextSobre">Nome de usuário</label><br>
+                    <input type="text"  placeholder="Nome..." id="nomeUsuario" class="inputLogin">
+                <br>
+                <br>
+                    <input type="checkbox" required>
+                    <a href="termosDeUso.html" target="_blank" id="TermosB">
+                    <label>Li e aceito os Termos de Uso.</label>
+                    </a>
+                    <br><br>
+                    <button type="submit" id="Bcadastrar">Enviar</button>
+                    <br><br>
+                    <a href="index.html" class="enterL">Já tenho uma conta</a>
+                    <br>
+   
+            </form>
+    </section>
+<br><br>
+    <footer>
+    <p style="text-align: center;">&copy; 2026 CriticalHit. Todos os direitos reservados.</p>
+</footer>
+   <script src="script.js"></script>
+</body>
+</html>

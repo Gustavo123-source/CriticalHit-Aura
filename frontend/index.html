@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Hit</title>
+     <script>
+        if (localStorage.getItem("tema") === "escuro") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <header> <!--header-->
+        <div class="informações">
+            <div id="logo"> <!--div-->
+                <img src="fotos/Sem nome (1920 x 540 px).png" width="400px" id="logo">
+            </div>
+        </div>
+    </header>
+
+    <section  id="formLogin" style="margin-top: 9%;">
+        
+         <br>
+        <br>
+        <form onsubmit="login(event)">
+            <h2 class="TextSobre">Entre no CriticalHit!</h2>
+            <p class="TextSobre">Faça login para voltar a usar nosso site!</p>
+                    <label for="email" class="TextSobre">Email</label><br>
+                    <input type="email" required placeholder="Email..." id="email" class="inputLogin">
+                <br>
+                <br>
+                    <label for="Senha" class="TextSobre">Senha</label><br>
+                    <input type="password" required placeholder="Senha..." id="senha" class="inputLogin"> <input style="position: absolute;" type="checkbox" onclick="senha.type = this.checked ? 'text' : 'password'">
+                <br>
+                    <br>
+                    <button type="submit" id="Binicio">Entrar</button>
+                    <br><br>
+                    <a href="cadastrar.html" class="enterL">Não tenho uma conta</a>
+                    <br>
+            </form>
+       
+    </section>
+
+    <br><br>
+    <footer>
+    <p style="text-align: center;">&copy; 2026 CriticalHit. Todos os direitos reservados.</p>
+</footer>
+    <script src="script.js"></script>
+</body>
+</html>
