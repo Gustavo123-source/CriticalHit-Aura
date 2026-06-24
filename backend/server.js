@@ -15,6 +15,7 @@ const db = mysql.createConnection({
     database: "CriticalHit"
 });
 
+//sql funcionando//
 db.connect((erro) =>{
     if(erro) {
         console.log("Erro ao conectar");
@@ -48,7 +49,7 @@ app.post("/player", (req, res) => {
         });
     }
 
-      //identificar se o player ja existe//
+      //identificar se o player ja existe usando sql//
 const verificaSQL = "SELECT * FROM player WHERE nick = ? or email = ?";
         db.query(verificaSQL, [nick, email],    
         (erro, resultado) => {
@@ -174,7 +175,7 @@ console.log(req.body);
             erro: "O título deve conter no máximo 15 caracteres."
         });
     }
-
+//sql publicar jogos//
  const sqlJogos = `
         INSERT INTO jogos (titulo, capa, url, id_player)
         VALUES (?, ?, ?, ?) `;
@@ -222,6 +223,7 @@ console.log(req.body);
 
 
   //deletar os jogos  & conta//
+  //deletar jogos//
 app.delete("/player/:id", (req, res) => {
     const id = req.params.id;
     const sqlDel = "DELETE FROM player WHERE id = ?";
@@ -245,12 +247,16 @@ app.delete("/player/:id", (req, res) => {
         });
     });
 });
+//deletar jogos//
+app.delete("/jogos/player/:id_player/:titulo", (req, res) => {
+    const { id_player, titulo } = req.params;
 
-app.delete("/jogos/:id", (req,red) => {
-     const id = req.params.id;
-    const sqlDelJogo = "DELETE FROM jogos WHERE id = ?";
+    const sqlDelGame = `
+        DELETE FROM jogos
+        WHERE id_player = ? AND titulo = ?
+    `;
 
-    db.query(sqlDelJogo, [id], (erro, resultado) => {
+    db.query(sqlDelGame, [id_player, titulo], (erro, resultado) => {
         if (erro) {
             console.error(erro);
             return res.status(500).json({
@@ -260,16 +266,15 @@ app.delete("/jogos/:id", (req,red) => {
 
         if (resultado.affectedRows === 0) {
             return res.status(404).json({
-                erro: "Jogo não encontrada"
+                erro: "Jogo não encontrado ou não pertence ao jogador"
             });
         }
 
         res.json({
-            mensagem: "Jogo removido"
+            mensagem: "Jogo removido com sucesso"
         });
     });
 });
-
 
 //deixa no final prfv!//servidor rodar//
 app.listen(3000, () => {

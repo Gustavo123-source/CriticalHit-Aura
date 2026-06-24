@@ -259,19 +259,30 @@ async function excluirConta() {
 //game delete//
 async function excluirJogo() {
     const id_player = localStorage.getItem("id_player");
+    const nomeJogo = document.getElementById("delInput").value.trim();
 
     if (!id_player) {
         alert("Faça login primeiro!");
         return;
     }
 
-    const confirmar = confirm("Tem certeza que deseja excluir seus jogos?");
+    if (!nomeJogo) {
+        alert("Digite o nome do jogo!");
+        return;
+    }
+
+    const confirmar = confirm(
+        `Tem certeza que deseja excluir "${nomeJogo}"?`
+    );
 
     if (!confirmar) return;
 
-    const resposta = await fetch(`${API}/jogos/player/${id_player}`, {
-        method: "DELETE"
-    });
+    const resposta = await fetch(
+        `${API}/jogos/player/${id_player}/${encodeURIComponent(nomeJogo)}`,
+        {
+            method: "DELETE"
+        }
+    );
 
     const dados = await resposta.json();
 
@@ -279,10 +290,10 @@ async function excluirJogo() {
         alert(dados.erro);
         return;
     }
-    alert(dados.mensagem);
-    window.location.href = "index.html";
 
+    alert(dados.mensagem);
 }
+
  //dados de perfil do player//
 async function dadosPlayer() {
       console.log("Função executou");
