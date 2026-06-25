@@ -64,27 +64,29 @@ async function cadastro(event) {
 
     try {
         console.log(newPlayer)
-        const resposta = await fetch(`${API}/player`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newPlayer)
-        });
-         
+const resposta = await fetch(`${API}/player`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newPlayer)
+});
 
-        if (!resposta.ok) {
-            const dados = await resposta.json();
-               console.log("Resposta do servidor:", dados);
-               console.log("Status:", resposta.status);
-               alert(JSON.stringify(dados));
-            return;
-        } else{
-        alert("Você foi cadastrado com sucesso!")
-        window.location.href = "inicio.html";
-        
-        }
-    } catch(erro) {
+const dados = await resposta.json();
+
+if (!resposta.ok) {
+    alert(JSON.stringify(dados));
+    return;
+}
+
+localStorage.setItem("id_player", dados.id);
+
+alert("Você foi cadastrado com sucesso!");
+window.location.href = "inicio.html";
+
+}
+
+catch(erro) {
         console.log(erro);
     }
 }
@@ -354,14 +356,4 @@ async function dadosPlayer() {
 
 window.onload = () => {
     dadosPlayer();
-};
-
-
-
-
-
-
-
-
-
-
+}
