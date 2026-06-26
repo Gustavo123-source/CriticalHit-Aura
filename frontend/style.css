@@ -100,7 +100,8 @@ p {
     margin-bottom:9%;
     margin-left:9%;
     margin-right:9%;
-    margin-top:2%
+    margin-top:2%;
+    white-space: nowrap;
 }
 
 h3 {
@@ -164,13 +165,13 @@ nav {
 }
 
 /* Links Padrão */
-.a, .enterL {
+.enterL {
     color: #8ebed7;
     text-decoration: none;
     transition: color 0.5s ease;
 }
 
-.a:hover, .enterL:hover {
+.enterL:hover {
     color: rgb(0, 102, 255);
 }
 
@@ -282,25 +283,6 @@ nav {
     border-radius: 10px;
     padding: 20px;
     justify-content: center;
-}
-
-#pesquisar {
-    font-family: f1;
-    border: #8ebed7 solid 2px;
-    border-radius: 25px;
-    padding: 10px 15px;
-    padding-left: 15px;
-    margin-top: 7%;
-    margin-right: 4%;
-    width: 100%;       
-    max-width: 350px; 
-    transition: border-color 0.3s ease, transform 0.3s ease;
-}
-
-#pesquisar:focus {
-  border-color: #3d508e;
-  outline: none;
-  transform: scale(1.025);
 }
 
 .inputLogin:focus {
@@ -573,7 +555,7 @@ background-color: var(--secondary-color);
 .tituloDosTermos {
     text-decoration:underline;
     color:#8ebed7;
-}
+}der
 .fotosSamurai{
     width:50%
 }
@@ -635,34 +617,27 @@ background-color: var(--secondary-color);
   100% { transform: translateX(0); }
 }
 
-
-
 #delInput {
     padding:1%;
     border-radius:15px;
     margin-bottom:0.5%;
 }
 
-#perfilCanto {
-    display:flex;
-    flex-direction:row;
-    position:fixed;
-    background-color:#45647e;
-    font-family: f1;
-    color:white;
-    border-radius:15px;
-    padding:0.5%;
-    bottom:20px;
-    left:20px;
-}
-
-#nomeUserCanto {
-    padding:1%;
-    white-space: nowrap;
-}
-
 #botaoCanto {
     width:80%;
     margin:0%;
     padding-left:15%;
+}
+
+#perfilHeader {
+    display:flex;
+    flex-direction:row;
+}
+
+#pesquisar {
+    padding:7%;
+    padding-left:13%;
+    width:100%;
+    border-radius:15px;
+    border:#6b899b solid 2px;
 }
