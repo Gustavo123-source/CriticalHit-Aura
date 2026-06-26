@@ -96,6 +96,13 @@ header {
     font-size: larger;
 }
 
+p {
+    margin-bottom:9%;
+    margin-left:9%;
+    margin-right:9%;
+    margin-top:2%
+}
+
 h3 {
     font-family: f1;
 }
@@ -634,4 +641,28 @@ background-color: var(--secondary-color);
     padding:1%;
     border-radius:15px;
     margin-bottom:0.5%;
+}
+
+#perfilCanto {
+    display:flex;
+    flex-direction:row;
+    position:fixed;
+    background-color:#45647e;
+    font-family: f1;
+    color:white;
+    border-radius:15px;
+    padding:0.5%;
+    bottom:20px;
+    left:20px;
+}
+
+#nomeUserCanto {
+    padding:1%;
+    white-space: nowrap;
+}
+
+#botaoCanto {
+    width:80%;
+    margin:0%;
+    padding-left:15%;
 }
