@@ -96,14 +96,6 @@ header {
     font-size: larger;
 }
 
-p {
-    margin-bottom:9%;
-    margin-left:9%;
-    margin-right:9%;
-    margin-top:2%;
-    white-space: nowrap;
-}
-
 h3 {
     font-family: f1;
 }
@@ -640,4 +632,8 @@ background-color: var(--secondary-color);
     width:100%;
     border-radius:15px;
     border:#6b899b solid 2px;
+}
+
+#nomeHeader{
+    white-space: nowrap
 }
