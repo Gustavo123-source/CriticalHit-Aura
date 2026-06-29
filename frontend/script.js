@@ -1,48 +1,78 @@
-
 const API = "http://localhost:3000"
 
 
-const btn = document.querySelector("#toggle-btn");
-const container = document.querySelector('.container');
+//acontecer antes de tudo//
+document.addEventListener("DOMContentLoaded", () => {
+  
+    const btn = document.querySelector("#toggle-btn");
+    if (btn) {
+        btn.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark-mode");
+            const éEscuro = document.documentElement.classList.contains("dark-mode");
+            localStorage.setItem("tema", éEscuro ? "escuro" : "claro");
+        });
+    }
 
+    const image1 = document.getElementById("minhaimagem");
+    const inputcp = document.getElementById("inputArquivo");
+    const botaocp = document.getElementById("botaoconfp");
 
-const temaSalvo = localStorage.getItem("tema");
-if (temaSalvo === "escuro") {
-    document.documentElement.classList.add("dark-mode");
+    if (image1 && inputcp && botaocp) {
+        botaocp.addEventListener("click", () => inputcp.click());
+        inputcp.addEventListener("change", (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => { image1.src = e.target.result; };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    HeaderNick();
+
+    if (document.getElementById("dds")) {
+        setTimeout(dadosPlayer, 0);
+    }
+
+    if (document.getElementById("paginaDeJogos")) {
+        setTimeout(carregarJogo, 0);
+    }
+        //nn entendo ainda//
+    const campoBusca = document.getElementById("pesquisar");
+    if (campoBusca) {
+        campoBusca.addEventListener("input", () => {
+            filtrarJogos(campoBusca.value);
+        });
+    }
+});
+     //nn entendo ainda//
+function filtrarJogos(termo) {
+    const cards = document.querySelectorAll("#paginaDeJogos .aDosJogos");
+    const termoBusca = termo.trim().toLowerCase();
+
+    cards.forEach(card => {
+        const titulo = card.querySelector("h3")?.textContent.toLowerCase() ?? "";
+        const nick = card.querySelector(".nickCriador")?.textContent.toLowerCase() ?? "";
+        const visivel = titulo.includes(termoBusca) || nick.includes(termoBusca);
+        card.style.display = visivel ? "" : "none";
+    });
+
+    const semResultado = document.getElementById("semResultadoBusca");
+    const algumVisivel = [...cards].some(c => c.style.display !== "none");
+
+    if (!algumVisivel && termoBusca !== "") {
+        if (!semResultado) {
+            const msg = document.createElement("p");
+            msg.id = "semResultadoBusca";
+            msg.textContent = `Nenhum jogo encontrado para "${termo}".`;
+            msg.style.cssText = "width:100%; text-align:center; color:gray; padding: 32px 0;";
+            document.getElementById("paginaDeJogos").appendChild(msg);
+        }
+    } else if (semResultado) {
+        semResultado.remove();
+    }
 }
-
-btn.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark-mode");
-
-    if (document.documentElement.classList.contains("dark-mode")) {
-        localStorage.setItem("tema", "escuro");
-    } else {
-        localStorage.setItem("tema", "claro");
-    }
-});
-
-
-
-const image1 = document.getElementById ("minhaimagem");
-const inputcp = document.getElementById ("inputArquivo");
-const botaocp = document.getElementById ("botaoconfp");
- 
-botaocp.addEventListener("click", function () {
-    inputcp.click();
-});
- 
-inputcp.addEventListener("change", function (event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (event) {
-            image1.src = event.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-});
- 
-
 
 
 //script conectado no backend, nn colocar coisas que nn usam backend aqui!!//
@@ -81,6 +111,8 @@ if (!resposta.ok) {
 
 localStorage.setItem("id_player", dados.id);
 
+localStorage.setItem("id_player", dados.id);
+localStorage.setItem("nick", dados.nick);
 alert("Você foi cadastrado com sucesso!");
 window.location.href = "inicio.html";
 
@@ -114,6 +146,7 @@ async function login(event) {
         }
 
         localStorage.setItem("id_player", dados.id);
+        localStorage.setItem("nick", dados.nick);
         alert("Login feito!");
         window.location.href = "inicio.html";
 
@@ -125,36 +158,6 @@ async function login(event) {
 
 
 
-         //função para adm espero q funcione é quase 00 da noite!//
-async function adm(event) {
-    event.preventDefault();
-
-    const senha = document.getElementById("senhaADM").value;
-
-    try {
-
-        const resposta = await fetch(`${API}/adm`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ senha })
-        });
-
-        const dados = await resposta.json();
-
-        if (!resposta.ok) {
-            alert(dados.erro);
-            return;
-        }
-        
-        alert("Login adm feito!");
-        window.location.href = "jogo.html";
-    
-    } catch (erro) {
-        console.log(erro);
-    }
-}
 
 
 
@@ -195,23 +198,30 @@ if (resposta.ok) {
 
 async function carregarJogo() {
     const paginaDeJogos = document.getElementById("paginaDeJogos");
+    if (!paginaDeJogos) return;
+    paginaDeJogos.innerHTML = "<p style='text-align:center; color:gray;'>Carregando jogos...</p>";
 
     try {
         const resposta = await fetch(`${API}/jogos`);
         const jogos = await resposta.json();
 
-        paginaDeJogos.innerHTML = "";
-        jogos.forEach(jogo => {
-            paginaDeJogos.innerHTML += `
-                 <a href="${jogo.url}" class="aDosJogos">
-                  <img src="${jogo.capa}" alt="${jogo.titulo}" class="fotoDoJogo" style="border-radius: 10px;">
-                  <h3 id="idCapaJogo">${jogo.titulo}</h3>
-                  </a>
-            `;
-        });
+        if (jogos.length === 0) {
+            paginaDeJogos.innerHTML = "<p>Nenhum jogo encontrado.</p>";
+            return;
+        }
+
+        const html = jogos.map(jogo => `
+            <a href="${jogo.url}" class="aDosJogos">
+                <p class="nickCriador">Por: ${jogo.nick || "Anônimo"}</p>
+                <img src="${jogo.capa}" alt="${jogo.titulo}" class="fotoDoJogo" style="border-radius:10px;">
+                <h3>${jogo.titulo}</h3>
+            </a>
+        `).join("");
+        paginaDeJogos.innerHTML = html;
 
     } catch (erro) {
-        console.log(erro);
+        console.error(erro);
+        paginaDeJogos.innerHTML = "<p>Erro ao carregar os jogos.</p>";
     }
 }
 
@@ -354,6 +364,29 @@ async function dadosPlayer() {
     }
 }
 
-window.onload = () => {
-    dadosPlayer();
+async function HeaderNick() {
+    const nomeHeader = document.getElementById("nomeHeader");
+    if (!nomeHeader) return;
+
+    // Mostra imediatamente o nick salvo no localStorage (Zero lag)
+    const nickSalvo = localStorage.getItem("nick");
+    if (nickSalvo) {
+        nomeHeader.textContent = nickSalvo;
+    }
+
+    const id = localStorage.getItem("id_player");
+    if (!id) return;
+
+    try {
+        // Faz o fetch de forma silenciosa em segundo plano
+        const resposta = await fetch(`${API}/player/${id}`);
+        const player = await resposta.json();
+
+        if (player.nick && player.nick !== nickSalvo) {
+            nomeHeader.textContent = player.nick;
+            localStorage.setItem("nick", player.nick);
+        }
+    } catch (erro) {
+        console.error("Erro ao atualizar nick do header:", erro);
+    }
 }

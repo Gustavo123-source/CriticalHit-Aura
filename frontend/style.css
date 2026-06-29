@@ -1,160 +1,4 @@
 
-:root {
-    --bg-color: #f4f4f9;
-    --text-color: #333;
-
-    --nav-color: #285171;
-    --secondary-color: #33658A;
-    --accent-color: #84aec5;
-
-    --card-bg: aliceblue;
-    --card-text: #285171;
-    --border-color: #285171;
-
-    --input-bg: #ffffff;
-    --input-text: #333333;
-
-    --info-bg: #33658A;
-    --info-card-bg: #ffffff;
-    --info-text: #ffffff;
-
-    --btn-bg: #285171;
-    --btn-text: #ffffff;
-  --Tag-color: #84aec5;
-    --container-bg: #ffffff;
-    transition: all 0.5s;
-}
-
-html.dark-mode {
-
-
-  --Tag-color: #ffffff;
- --bg-color: #1f3347;
-    --text-color: #e8f1f7;
-
-    --nav-color: #264c69;
-    --secondary-color: #25577b;
-    --accent-color: #84aec5;
-
-    --card-bg: #22384b;
-    --card-text: #e8f1f7;
-    --border-color: #84aec5;
-
-    --input-bg: #1c2d3a;
-    --input-text: #ffffff;
-
-    --info-bg: #15364d;
-    --info-card-bg: #1c2d3a;
-    --info-text: #e8f1f7;
-
-      --btn-bg: #84aec5;
-    --btn-text: #152331;
-
-     --container-bg: #22384b;
-     transition: all 0.5s;
-}
-
-body {
-background-color: var(--bg-color);
-    color: var(--text-color);
- font-family: f3;
- margin: 0;
-    padding: 0;
-transition: all 0.5s;
-
-}  
-
-/* ==========================================================================
-   1. FONTES & DECLARAÇÕES
-   ========================================================================== */
-@font-face {
-    font-family: f1;
-    src: url('ari_w9500/ari-w9500-bold.ttf');
-}
-
-@font-face {
-    font-family: f2;
-    src: url('daydream_3/Daydream\ DEMO.otf');
-}
-
-@font-face {
-    font-family: f3;
-    src: url('cooperbits/CooperBits.ttf');
-}
-
-@font-face {
-    font-family: f4;
-    src: url(upheaval_pro/UpheavalPro.otf);
-}
-
-/* ==========================================================================
-   2. CONFIGURAÇÕES GERAIS (RESET & BASE)
-   ========================================================================== */
-
-
-header {
-    font-size: larger;
-}
-
-h3 {
-    font-family: f1;
-}
-
-h4 {
-    font-family: f2;
-}
-
-input, select, textarea {
-        font-family: f3;
-    background-color: var(--input-bg);
-    color: var(--input-text);
-}
-
-::placeholder {
-    color: #84aec5;
-}
-
-/* ==========================================================================
-   3. LINKS & NAVEGAÇÃO (NAV BAR)
-   ========================================================================== */
-nav {
-    display: flex;
-    background-color: var(--nav-color);
-    justify-content: space-around;
-    align-items: center; /* Alinha os itens verticalmente ao centro */
-    padding: 0.5% 1%;
-}
-
-.aDoNav {
-    text-decoration: none;
-    color: hsl(0, 0%, 100%);
-    position : relative;
-    width: max-content;
-    transition: color 0.3s ease;
-}
-
-.aDoNav::after {
-    content: '';
-    position: absolute;
-    background: var(--Tag-color);
-    height: 3px;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-      transform: scaleX(0);
-    transform-origin: center;
-    transition: 300ms ease;
-}
-.aDoNav:hover::after {
-   transform: scaleX(1);
-}
-
-
-
-.aDoNav:hover{
-    color: #5399be;
-    
-}
 
 /* Links Padrão */
 .enterL {
@@ -191,8 +35,11 @@ nav {
     border: 2px solid var(--border-color);
     padding: 1%;
     border-radius: 15px;
-    width: 15%;
-    min-width: 150px; /* Garante que não fique espremido em telas menores */
+     display: inline-block;
+    width: 200px; 
+    min-height: 250px;
+    vertical-align: top;
+    min-width: 150px; 
     transition: transform 0.3s ease;
 }
 
@@ -202,7 +49,10 @@ nav {
 
 .fotoDoJogo {
     width: 100%;
-    border-radius: 8px; /* Deixa as bordas da foto arredondadas para combinar */
+    height: 150px;
+    object-fit: cover; 
+    background-color: #333;
+    border-radius: 8px; 
     display: block;
 }
 
@@ -362,15 +212,7 @@ background-color: var(--secondary-color);
     font-family: f4;
 }
 
-.informações {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--info-bg);
-    padding: 0.25%;
-    color: var(--info-text);
-}
+
 
 .inf {
     font-size: x-small;
@@ -407,23 +249,7 @@ background-color: var(--secondary-color);
     border: solid 2px black;
 }
 
-#logo {
-    margin-left: 0.2%;
-    transition: filter 0.3s ease;
-}
 
-#logo:hover {
-    filter: drop-shadow(0 0 4px #6b899b);
-}
-
-#nosApoie {
-    margin-right: 10%;
-    padding-bottom:20px;
-}
-
-#Sobre1 {
-    margin-left: 2%;
-}
 
 
 #nomeConf {
@@ -476,36 +302,6 @@ background-color: var(--secondary-color);
     background-color: #1b1b1b;
 } 
 
-#toggle-btn {
-    width: 70px;       
-    height: 34px;       
-    border: 2px solid var(--text-color);
-    background-color: transparent;
-    border-radius: 60px;
-    position: relative;
-    cursor: pointer;
-    margin-left: 2%; 
-     transition: background-color .5s;
-  
-}
-
-#toggle-btn::before {
-    content: "";
-    position: absolute;
-    width: 26px;       
-    height: 26px;      
-    background-color: var(--text-color);
-    border-radius: 50%;
-    top: 50%;
-    left: 3px;           
-    transform: translateY(-50%);
-    transition: left .5s; 
-}
-
-
-.dark-mode #toggle-btn::before {
-    left: 37px;       
-}
 
 .botaoEditar{
     background-color: #33658A;
@@ -621,10 +417,7 @@ background-color: var(--secondary-color);
     padding-left:15%;
 }
 
-#perfilHeader {
-    display:flex;
-    flex-direction:row;
-}
+
 
 #pesquisar {
     padding:7%;
@@ -639,9 +432,6 @@ background-color: var(--secondary-color);
 transform: scale(1.05);
 }
 
-#nomeHeader{
-    white-space: nowrap
-}
         
         #paginaContatos {
             display: flex;

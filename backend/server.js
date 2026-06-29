@@ -130,12 +130,17 @@ app.post("/adm", (req, res) => {
 
  // jogos publish!!! //
 app.get("/jogos", (req, res) => {
-  const sqlJogos = "SELECT * FROM jogos"
-   db.query(sqlJogos, (erro, resultado) => {
+    const sqlJogos = `
+        SELECT jogos.*, player.nick 
+        FROM jogos 
+        INNER JOIN player ON jogos.id_player = player.id
+    `;
+    
+    db.query(sqlJogos, (erro, resultado) => {
         if (erro) {
             console.error(erro);
             return res.status(500).json({
-                erro: "Erro ao Publicar jogos."
+                erro: "Erro ao buscar jogos no banco de dados."
             });
         }
         res.json(resultado);
