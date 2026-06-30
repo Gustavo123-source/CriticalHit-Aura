@@ -244,13 +244,40 @@ async function carregarJogo() {
 
         const html = jogos.map(jogo => `
             <a href="${jogo.url}" class="aDosJogos">
-                <p class="nickCriador">Por: ${jogo.nick || "Anônimo"}</p>
                 <img src="${jogo.capa}" alt="${jogo.titulo}" class="fotoDoJogo" style="border-radius:10px;">
                 <h3>${jogo.titulo}</h3>
+                <p class="nickCriador">Por: ${jogo.nick || "Anônimo"}</p>
             </a>
         `).join("");
         paginaDeJogos.innerHTML = html;
 
+document.querySelectorAll(".aDosJogos").forEach(card => {
+
+    card.addEventListener("mousemove", e => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.setProperty("--x", `${x}px`);
+        card.style.setProperty("--y", `${y}px`);
+
+        // Inclinação
+
+        const rx = ((x / rect.width) - 0.5) * 8;
+        const ry = ((y / rect.height) - 0.5) * -8;
+
+        card.style.setProperty("--rx", `${rx}deg`);
+        card.style.setProperty("--ry", `${ry}deg`);
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.setProperty("--rx","0deg");
+        card.style.setProperty("--ry","0deg");
+    });
+
+});
     } catch (erro) {
         console.error(erro);
         paginaDeJogos.innerHTML = "<p>Erro ao carregar os jogos.</p>";
@@ -395,4 +422,3 @@ async function dadosPlayer() {
         console.log(erro);
     }
 }
-

@@ -14,47 +14,12 @@
 /* ==========================================================================
    4. COMPONENTES / CARDS DE JOGOS
    ========================================================================== */
-#paginaDeJogos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px; /* Cria um espaçamento consistente entre os cards */
-    padding: 20px;
-}
+
 
 .Tag {
     color: var(--Tag-color);
 }
 
-
-
-.aDosJogos {
-    text-decoration: none;
-    color: var(--card-text);
-    background-color: var(--card-bg);
-    border: 2px solid var(--border-color);
-    padding: 1%;
-    border-radius: 15px;
-     display: inline-block;
-    width: 200px; 
-    min-height: 250px;
-    vertical-align: top;
-    min-width: 150px; 
-    transition: transform 0.3s ease;
-}
-
-.aDosJogos:hover {
-    transform: scale(1.05);
-}
-
-.fotoDoJogo {
-    width: 100%;
-    height: 150px;
-    object-fit: cover; 
-    background-color: #333;
-    border-radius: 8px; 
-    display: block;
-}
 
 /* ==========================================================================
    5. BOTÕES
@@ -433,87 +398,168 @@ transform: scale(1.05);
 }
 
         
-#paginaContatos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    gap: 16px;
-}
+        #paginaContatos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            gap: 16px;
+        }
+ 
+        .subtituloContato {
+            color: var(--accent-color);
+            font-family: f3;
+            font-size: medium;
+            margin-top: -8px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+ 
+        .cardContato {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 20px 30px;
+            width: 100%;
+            max-width: 420px;
+            text-decoration: none;
+            color: var(--card-text);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+ 
+        .cardContato:hover {
+            transform: scale(1.04) translateY(-3px);
+            box-shadow: 0 8px 24px rgba(40, 81, 113, 0.25);
+        }
+ 
+        .iconeContato {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+ 
+        .iconeContato svg {
+            width: 28px;
+            height: 28px;
+        }
+ 
+        .icone-discord { background-color: #5865F2; }
 
-.subtituloContato {
-    color: var(--accent-color);
-    font-family: f3;
-    font-size: medium;
-    margin-top: -8px;
-    margin-bottom: 16px;
-    text-align: center;
-}
+        .icone-instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        
+        .icone-email { background-color: var(--secondary-color); }
+ 
+        .infoContato {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+ 
+        .nomeContato {
+            font-family: f1;
+            font-size: large;
+            color: var(--card-text);
+        }
+ 
+        .handleContato {
+            font-family: f3;
+            font-size: small;
+            color: var(--accent-color);
+        }
+ 
+        .dividerContato {
+            width: 100%;
+            max-width: 420px;
+            border: none;
+            border-top: 1px solid var(--border-color);
+            opacity: 0.4;
+            margin: 8px 0;
+        }
 
-.cardContato {
+
+    /*Teste game card*/
+         #paginaDeJogos{
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
+    margin-left: 1%;
+}
+
+.aDosJogos{
+text-decoration: none;
+    color: var(--card-text);
     background-color: var(--card-bg);
     border: 2px solid var(--border-color);
-    border-radius: 15px;
-    padding: 20px 30px;
-    width: 100%;
-    max-width: 420px;
-    text-decoration: none;
-    color: var(--card-text);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    padding: 1%;
+    border-radius: 10px;
+     display: inline-block;
+    width: 200px; 
+    min-height: 250px;
+    vertical-align: top;
+    min-width: 150px; 
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        filter .18s ease;
 }
 
-.cardContato:hover {
-    transform: scale(1.04) translateY(-3px);
-    box-shadow: 0 8px 24px rgba(40, 81, 113, 0.25);
+.aDosJogos:hover{
+    transform: perspective(700px) rotateX(var(--ry)) rotateY(var(--rx)) scale(1.03);
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.45),
+        0 0 18px rgba(103,193,245,.18);
 }
 
-.iconeContato {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+.fotoDoJogo{
+    width:100%;
+    display:block;
+    transition: transform .18s ease, filter .18s ease;
 }
 
-.iconeContato svg {
-    width: 28px;
-    height: 28px;
+.aDosJogos:hover .fotoDoJogo{
+    transform: scale(1.04);
 }
 
-.icone-discord { background-color: #5865F2; }
+/* brilho principal */
 
-.icone-instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-
-.icone-email { background-color: var(--secondary-color); }
-
-.infoContato {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+.aDosJogos::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .15s;
 }
 
-.nomeContato {
-    font-family: f1;
-    font-size: large;
-    color: var(--card-text);
+.aDosJogos:hover::before{
+    opacity:1;
 }
 
-.handleContato {
-    font-family: f3;
-    font-size: small;
-    color: var(--accent-color);
+
+.aDosJogos::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    border-radius:inherit;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.08);
+
+    opacity:0;
+    transition:.18s;
 }
 
-.dividerContato {
-    width: 100%;
-    max-width: 420px;
-    border: none;
-    border-top: 1px solid var(--border-color);
-    opacity: 0.4;
-    margin: 8px 0;
+.aDosJogos:hover::after{
+    opacity:1;
 }
+
+
