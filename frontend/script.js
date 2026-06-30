@@ -4,6 +4,7 @@ const API = "http://localhost:3000"
 //acontecer antes de tudo//
 document.addEventListener("DOMContentLoaded", () => {
   
+      //trocar a cor de fundo//
     const btn = document.querySelector("#toggle-btn");
     if (btn) {
         btn.addEventListener("click", () => {
@@ -12,7 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("tema", éEscuro ? "escuro" : "claro");
         });
     }
-
+     
+    //codigo bomba do Juliano para a foto de perfil//
     const image1 = document.getElementById("minhaimagem");
     const inputcp = document.getElementById("inputArquivo");
     const botaocp = document.getElementById("botaoconfp");
@@ -28,17 +30,47 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    
+ //rodar o header nick//
+ async function HeaderNick() {
+    const nomeHeader = document.getElementById("nomeHeader");
+    if (!nomeHeader) return;
 
+    // Mostra imediatamente o nick salvo no localStorage (Zero lag)
+    const nickSalvo = localStorage.getItem("nick");
+    if (nickSalvo) {
+        nomeHeader.textContent = nickSalvo;
+    }
+
+    const id = localStorage.getItem("id_player");
+    if (!id) return;
+
+    try {
+        // Faz o fetch de forma silenciosa em segundo plano
+        const resposta = await fetch(`${API}/player/${id}`);
+        const player = await resposta.json();
+
+        if (player.nick && player.nick !== nickSalvo) {
+            nomeHeader.textContent = player.nick;
+            localStorage.setItem("nick", player.nick);
+        }
+    } catch (erro) {
+        console.error("Erro ao atualizar nick do header:", erro);
+    }
+}
     HeaderNick();
 
+     // fazer as funçoes funcionar -->//
+
+     //dados do perfil//
     if (document.getElementById("dds")) {
         setTimeout(dadosPlayer, 0);
     }
-
+      //aparecer os jogos no inicio//
     if (document.getElementById("paginaDeJogos")) {
         setTimeout(carregarJogo, 0);
     }
-        //nn entendo ainda//
+       //pesquisar funcionar//
     const campoBusca = document.getElementById("pesquisar");
     if (campoBusca) {
         campoBusca.addEventListener("input", () => {
@@ -46,26 +78,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-     //nn entendo ainda//
-function filtrarJogos(termo) {
+     //Pesquisar Lupa//
+function filtrarJogos(Lupa) {
     const cards = document.querySelectorAll("#paginaDeJogos .aDosJogos");
-    const termoBusca = termo.trim().toLowerCase();
+    const LupaBusca = Lupa.trim().toLowerCase();
 
     cards.forEach(card => {
         const titulo = card.querySelector("h3")?.textContent.toLowerCase() ?? "";
         const nick = card.querySelector(".nickCriador")?.textContent.toLowerCase() ?? "";
-        const visivel = titulo.includes(termoBusca) || nick.includes(termoBusca);
+        const visivel = titulo.includes(LupaBusca) || nick.includes(LupaBusca);
         card.style.display = visivel ? "" : "none";
     });
 
     const semResultado = document.getElementById("semResultadoBusca");
     const algumVisivel = [...cards].some(c => c.style.display !== "none");
 
-    if (!algumVisivel && termoBusca !== "") {
+    if (!algumVisivel && LupaBusca !== "") {
         if (!semResultado) {
             const msg = document.createElement("p");
             msg.id = "semResultadoBusca";
-            msg.textContent = `Nenhum jogo encontrado para "${termo}".`;
+            msg.textContent = `Nenhum jogo encontrado para "${Lupa}".`;
             msg.style.cssText = "width:100%; text-align:center; color:gray; padding: 32px 0;";
             document.getElementById("paginaDeJogos").appendChild(msg);
         }
@@ -364,29 +396,3 @@ async function dadosPlayer() {
     }
 }
 
-async function HeaderNick() {
-    const nomeHeader = document.getElementById("nomeHeader");
-    if (!nomeHeader) return;
-
-    // Mostra imediatamente o nick salvo no localStorage (Zero lag)
-    const nickSalvo = localStorage.getItem("nick");
-    if (nickSalvo) {
-        nomeHeader.textContent = nickSalvo;
-    }
-
-    const id = localStorage.getItem("id_player");
-    if (!id) return;
-
-    try {
-        // Faz o fetch de forma silenciosa em segundo plano
-        const resposta = await fetch(`${API}/player/${id}`);
-        const player = await resposta.json();
-
-        if (player.nick && player.nick !== nickSalvo) {
-            nomeHeader.textContent = player.nick;
-            localStorage.setItem("nick", player.nick);
-        }
-    } catch (erro) {
-        console.error("Erro ao atualizar nick do header:", erro);
-    }
-}

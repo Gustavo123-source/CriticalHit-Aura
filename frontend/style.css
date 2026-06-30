@@ -433,87 +433,87 @@ transform: scale(1.05);
 }
 
         
-        #paginaContatos {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-            gap: 16px;
-        }
- 
-        .subtituloContato {
-            color: var(--accent-color);
-            font-family: f3;
-            font-size: medium;
-            margin-top: -8px;
-            margin-bottom: 16px;
-            text-align: center;
-        }
- 
-        .cardContato {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            padding: 20px 30px;
-            width: 100%;
-            max-width: 420px;
-            text-decoration: none;
-            color: var(--card-text);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
- 
-        .cardContato:hover {
-            transform: scale(1.04) translateY(-3px);
-            box-shadow: 0 8px 24px rgba(40, 81, 113, 0.25);
-        }
- 
-        .iconeContato {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
- 
-        .iconeContato svg {
-            width: 28px;
-            height: 28px;
-        }
- 
-        .icone-discord { background-color: #5865F2; }
+#paginaContatos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 16px;
+}
 
-        .icone-instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        
-        .icone-email { background-color: var(--secondary-color); }
- 
-        .infoContato {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
- 
-        .nomeContato {
-            font-family: f1;
-            font-size: large;
-            color: var(--card-text);
-        }
- 
-        .handleContato {
-            font-family: f3;
-            font-size: small;
-            color: var(--accent-color);
-        }
- 
-        .dividerContato {
-            width: 100%;
-            max-width: 420px;
-            border: none;
-            border-top: 1px solid var(--border-color);
-            opacity: 0.4;
-            margin: 8px 0;
-        }
+.subtituloContato {
+    color: var(--accent-color);
+    font-family: f3;
+    font-size: medium;
+    margin-top: -8px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.cardContato {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    padding: 20px 30px;
+    width: 100%;
+    max-width: 420px;
+    text-decoration: none;
+    color: var(--card-text);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cardContato:hover {
+    transform: scale(1.04) translateY(-3px);
+    box-shadow: 0 8px 24px rgba(40, 81, 113, 0.25);
+}
+
+.iconeContato {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.iconeContato svg {
+    width: 28px;
+    height: 28px;
+}
+
+.icone-discord { background-color: #5865F2; }
+
+.icone-instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+
+.icone-email { background-color: var(--secondary-color); }
+
+.infoContato {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nomeContato {
+    font-family: f1;
+    font-size: large;
+    color: var(--card-text);
+}
+
+.handleContato {
+    font-family: f3;
+    font-size: small;
+    color: var(--accent-color);
+}
+
+.dividerContato {
+    width: 100%;
+    max-width: 420px;
+    border: none;
+    border-top: 1px solid var(--border-color);
+    opacity: 0.4;
+    margin: 8px 0;
+}
