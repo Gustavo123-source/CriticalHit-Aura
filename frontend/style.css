@@ -625,7 +625,6 @@ transform: scale(1.05);
   font-size:25px;
  margin: auto 0 10px;
     text-align:center;
-
     color:#474747;
 }
 
@@ -637,10 +636,28 @@ transform: scale(1.05);
 
     width:0;
     height:0;
-
     margin:0 auto 14px;
 
     border-left:11px solid transparent;
     border-right:11px solid transparent;
     border-top:12px solid #9a9a9a;
+    
+}
+
+#ConfigSettings{
+    display: flex;
+    flex-wrap: wrap;
+     gap: 20px;
+    justify-content:center;
+    align-items:center;
+}
+
+.ThingConfig{
+    border: solid 4px var(--border-color); border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.ThingConfig:hover{
+    transform: scale(1.05);
+    transition: 0.3s ease;
 }
