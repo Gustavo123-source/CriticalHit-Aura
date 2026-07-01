@@ -249,7 +249,14 @@ async function carregarJogo() {
                 <p class="nickCriador">Por: ${jogo.nick || "Anônimo"}</p>
             </a>
         `).join("");
-        paginaDeJogos.innerHTML = html;
+       paginaDeJogos.innerHTML = `
+    <a href="enviar.html" class="aDosJogos" style="text-align:center">
+        <h3>Publique o seu jogo</h3>
+         <img src="fotos/CriarJogos+.png" alt="sla" style="width: 150px; height: 150px">
+        
+        
+    </a>
+` + html;
 
 document.querySelectorAll(".aDosJogos").forEach(card => {
 
@@ -422,3 +429,5 @@ async function dadosPlayer() {
         console.log(erro);
     }
 }
+
+//teste de música//

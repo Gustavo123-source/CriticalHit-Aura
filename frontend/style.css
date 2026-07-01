@@ -519,7 +519,10 @@ text-decoration: none;
 }
 
 .fotoDoJogo{
-    width:100%;
+    width: 100%;
+    height: 150px;
+    display: block;
+    object-fit: cover;
     display:block;
     transition: transform .18s ease, filter .18s ease;
 }
@@ -528,7 +531,7 @@ text-decoration: none;
     transform: scale(1.04);
 }
 
-/* brilho principal */
+
 
 .aDosJogos::before{
     content:"";
@@ -561,5 +564,3 @@ text-decoration: none;
 .aDosJogos:hover::after{
     opacity:1;
 }
-
-
