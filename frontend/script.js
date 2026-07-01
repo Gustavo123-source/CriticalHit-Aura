@@ -243,16 +243,15 @@ async function carregarJogo() {
         }
 
         const html = jogos.map(jogo => `
-            <a href="${jogo.url}" class="aDosJogos">
-                <img src="${jogo.capa}" alt="${jogo.titulo}" class="fotoDoJogo" style="border-radius:10px;">
-                <h3>${jogo.titulo}</h3>
-                <p class="nickCriador">Por: ${jogo.nick || "Anônimo"}</p>
-            </a>
+              <a href="${jogo.url}" class="aDosJogos" data-criador="${jogo.nick || 'Anônimo'}">
+              <img src="${jogo.capa}" alt="${jogo.titulo}" class="fotoDoJogo">
+              <h3>${jogo.titulo}</h3>
+             
+               </a>
         `).join("");
        paginaDeJogos.innerHTML = `
-    <a href="enviar.html" class="aDosJogos" style="text-align:center">
-        <h3>Publique o seu jogo</h3>
-         <img src="fotos/CriarJogos+.png" alt="sla" style="width: 150px; height: 150px">
+    <a href="enviar.html" class="aDosJogos" style="text-align:center" data-criador="Publique o seu jogo">
+         <img src="fotos/CriarJogos+.png" alt="sla" style="width: 150px; height: 150px; margin-top: 95px;">
         
         
     </a>
