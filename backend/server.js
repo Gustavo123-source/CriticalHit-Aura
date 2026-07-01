@@ -170,9 +170,9 @@ console.log(req.body);
             erro: "A URL deve conter no máximo 100 caracteres."
         });
     }
-      if (novoJogo.capa.length > 100) {
+      if (novoJogo.capa.length > 255) {
         return res.status(400).json({
-            erro: "A URL da capa deve conter no máximo 100 caracteres."
+            erro: "A URL da capa deve conter no máximo 255 caracteres."
         });
     }
    if (novoJogo.titulo.length > 15) {

@@ -75,17 +75,20 @@
                             </div>
             <br><br>
             <div class="formJG">
-                <label for="genero" class="labelJG">Coloque a capa do seu jogo:</label>
-                <input type="url" id="capa" class="inputJG">
+                <label for="capaArquivo" class="labelJG">Coloque a capa do seu jogo:</label>
+                <input type="file" id="capaArquivo" class="inputJG" accept="image/*">
+                <img id="previewCapa" src="" alt="" style="display:none; max-width:150px; margin-top:10px; border-radius:6px;">
             </div>
             <br><br>
             <center>
                 <button type="submit" id="idPublicar">Publicar</button>
+                <p id="statusUpload" style="display:none; color:gray;">Enviando imagem, aguarde...</p>
             </center>
             <br><br>
         </form>
     </section>
     </center>
+    <script src="Cloudinary_upload.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

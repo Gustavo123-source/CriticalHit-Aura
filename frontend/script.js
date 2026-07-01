@@ -70,6 +70,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById("paginaDeJogos")) {
         setTimeout(carregarJogo, 0);
     }
+    //preview da capa do jogo (enviar.html)//
+    const inputCapa = document.getElementById("capaArquivo");
+    const previewCapa = document.getElementById("previewCapa");
+    if (inputCapa && previewCapa) {
+        inputCapa.addEventListener("change", () => {
+            const file = inputCapa.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewCapa.src = e.target.result;
+                    previewCapa.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
        //pesquisar funcionar//
     const campoBusca = document.getElementById("pesquisar");
     if (campoBusca) {
@@ -198,33 +215,52 @@ async function JogoPost(event) {
 
     const titulo = document.getElementById("titulo").value;
     const url = document.getElementById("urljogo").value;
-    const capa = document.getElementById("capa").value;
-    const dadosJogos = {
-    titulo,
-    url,
-    capa,
-    id_player: localStorage.getItem("id_player")
-};
+    const arquivoCapa = document.getElementById("capaArquivo").files[0];
+    const statusUpload = document.getElementById("statusUpload");
+    const botaoPublicar = document.getElementById("idPublicar");
+
+    if (!arquivoCapa) {
+        alert("Selecione uma imagem para a capa.");
+        return;
+    }
 
     try {
-       const resposta = await fetch(`${API}/jogos`, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(dadosJogos)
-});
+        // trava o botão e mostra status enquanto sobe a imagem//
+        if (botaoPublicar) botaoPublicar.disabled = true;
+        if (statusUpload) statusUpload.style.display = "block";
 
-const dados = await resposta.json();
+        const capaUrl = await enviarImagemParaCloudinary(arquivoCapa);
 
-if (resposta.ok) {
-    alert("Jogo publicado com sucesso!");
-} else {
-    alert(dados.erro);
-}
+        const dadosJogos = {
+            titulo,
+            url,
+            capa: capaUrl,
+            id_player: localStorage.getItem("id_player")
+        };
+
+        const resposta = await fetch(`${API}/jogos`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dadosJogos)
+        });
+
+        const dados = await resposta.json();
+
+        if (resposta.ok) {
+            alert("Jogo publicado com sucesso!");
+            window.location.href = "inicio.html";
+        } else {
+            alert(dados.erro);
+        }
 
     } catch (erro) {
         console.log(erro);
+        alert("Erro ao enviar a imagem ou publicar o jogo.");
+    } finally {
+        if (botaoPublicar) botaoPublicar.disabled = false;
+        if (statusUpload) statusUpload.style.display = "none";
     }
 }
 
