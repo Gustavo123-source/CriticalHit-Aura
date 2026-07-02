@@ -542,9 +542,7 @@ transform: scale(1.05);
     transition:.2s;
 }
 
-.fotoDoJogo::before{
-    content: "CRITICAL HIT";
-}
+
 .aDosJogos:hover{
     transform:
         perspective(700px)
@@ -722,3 +720,34 @@ audio {
 .discoGrow:focus{
     transform: rotate(360deg);
 }
+
+#Sobre1{
+    padding: 20px;
+    gap: 10px;
+   margin-left: 20px;
+}
+
+#configHeader{
+transition: all 0.3s ease;
+}
+ 
+#configHeader:hover{
+ background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px); 
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  transition: all 0.3s ease;
+}
+
+#PerfilPlayer{
+    transition: all 0.3s ease;
+}
+
+#PerfilPlayer:hover{
+ background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px); 
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  transition: all 0.3s ease;
+}
+

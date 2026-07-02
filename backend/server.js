@@ -109,24 +109,6 @@ app.post("/login", (req, res) => {
     });
 });
 
- //regras de adm//
-app.post("/adm", (req, res) => {
-
-    const { senha } = req.body;
-
-    if (senha !== "123") {
-        return res.status(401).json({
-            erro: "senha incorreto!"
-        });
-    }
-
-    else{
-         res.json({
-        mensagem: "Login adm realizado!"
-    });
-    }
-
-});
 
  // jogos publish!!! //
 app.get("/jogos", (req, res) => {
@@ -165,9 +147,9 @@ console.log(req.body);
             erro: "Preencha todos os campos."
         });
     }
-       if (novoJogo.url.length > 100) {
+       if (novoJogo.url.length > 255) {
         return res.status(400).json({
-            erro: "A URL deve conter no máximo 100 caracteres."
+            erro: "A URL deve conter no máximo 255 caracteres."
         });
     }
       if (novoJogo.capa.length > 255) {
@@ -228,7 +210,7 @@ console.log(req.body);
 
 
   //deletar os jogos  & conta//
-  //deletar jogos//
+  //deletar conta//
 app.delete("/player/:id", (req, res) => {
     const id = req.params.id;
     const sqlDel = "DELETE FROM player WHERE id = ?";

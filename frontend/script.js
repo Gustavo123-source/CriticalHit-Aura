@@ -273,10 +273,6 @@ async function carregarJogo() {
         const resposta = await fetch(`${API}/jogos`);
         const jogos = await resposta.json();
 
-        if (jogos.length === 0) {
-            paginaDeJogos.innerHTML = "<p>Nenhum jogo encontrado.</p>";
-            return;
-        }
 
         const html = jogos.map(jogo => `
               <a href="${jogo.url}" class="aDosJogos" data-criador="${jogo.nick || 'Anônimo'}">
@@ -307,8 +303,8 @@ document.querySelectorAll(".aDosJogos").forEach(card => {
 
         // Inclinação
 
-        const rx = ((x / rect.width) - 0.5) * 8;
-        const ry = ((y / rect.height) - 0.5) * -8;
+        const rx = ((x / rect.width) - 0.5) * 10;
+        const ry = ((y / rect.height) - 0.5) * -10;
 
         card.style.setProperty("--rx", `${rx}deg`);
         card.style.setProperty("--ry", `${ry}deg`);
