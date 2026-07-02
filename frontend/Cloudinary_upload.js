@@ -1,5 +1,4 @@
 
-
 const CLOUDINARY_CLOUD_NAME = "ppyjkrdd";
 const CLOUDINARY_UPLOAD_PRESET = "critical_hit";
 

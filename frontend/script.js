@@ -70,6 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById("paginaDeJogos")) {
         setTimeout(carregarJogo, 0);
     }
+      //aparecer só os jogos do player logado (jogo.html)//
+    if (document.getElementById("seusjogos")) {
+        setTimeout(carregarMeusJogos, 0);
+    }
     //preview da capa do jogo (enviar.html)//
     const inputCapa = document.getElementById("capaArquivo");
     const previewCapa = document.getElementById("previewCapa");
@@ -97,7 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
      //Pesquisar Lupa//
 function filtrarJogos(Lupa) {
-    const cards = document.querySelectorAll("#paginaDeJogos .aDosJogos");
+    const LupaEM = document.getElementById("paginaDeJogos") || document.getElementById("seusjogos");
+    const cards = LupaEM.querySelectorAll(".aDosJogos");
     const LupaBusca = Lupa.trim().toLowerCase();
 
     cards.forEach(card => {
@@ -116,12 +121,13 @@ function filtrarJogos(Lupa) {
             msg.id = "semResultadoBusca";
             msg.textContent = `Nenhum jogo encontrado para "${Lupa}".`;
             msg.style.cssText = "width:100%; text-align:center; color:gray; padding: 32px 0;";
-            document.getElementById("paginaDeJogos").appendChild(msg);
+            LupaEM.appendChild(msg);
         }
     } else if (semResultado) {
         semResultado.remove();
     }
 }
+
 
 
 //script conectado no backend, nn colocar coisas que nn usam backend aqui!!//
@@ -261,6 +267,61 @@ async function JogoPost(event) {
     } finally {
         if (botaoPublicar) botaoPublicar.disabled = false;
         if (statusUpload) statusUpload.style.display = "none";
+    }
+}
+
+
+//Jogos q vc publicou//
+async function carregarMeusJogos() {
+    const meusJogos = document.getElementById("seusjogos");
+    if (!meusJogos) return;
+
+    const idPlayer = localStorage.getItem("id_player");
+
+    if (!idPlayer) {
+        meusJogos.innerHTML = "<p style='text-align:center; color:gray;'>Faça login para ver seus jogos.</p>";
+        return;
+    }
+
+    try {
+        const resposta = await fetch(`${API}/jogos/player/${idPlayer}`);
+        const jogos = await resposta.json();
+
+        if (jogos.length === 0) {
+            meusJogos.innerHTML = "<p style='text-align:center; color:gray;'>Você ainda não publicou nenhum jogo.</p>";
+            return;
+        }
+
+        meusJogos.innerHTML = jogos.map(jogo => `
+              <a href="${jogo.url}" class="aDosJogos" data-criador="${jogo.nick || 'Anônimo'}">
+              <img src="${jogo.capa}" alt="${jogo.titulo}" class="fotoDoJogo">
+              <h3>${jogo.titulo}</h3>
+               </a>
+        `).join("");
+
+        document.querySelectorAll("#seusjogos .aDosJogos").forEach(card => {
+            card.addEventListener("mousemove", e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--x", `${x}px`);
+                card.style.setProperty("--y", `${y}px`);
+
+                const rx = ((x / rect.width) - 0.5) * 10;
+                const ry = ((y / rect.height) - 0.5) * -10;
+                card.style.setProperty("--rx", `${rx}deg`);
+                card.style.setProperty("--ry", `${ry}deg`);
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.setProperty("--rx", "0deg");
+                card.style.setProperty("--ry", "0deg");
+            });
+        });
+
+    } catch (erro) {
+        console.error(erro);
+        meusJogos.innerHTML = "<p style='text-align:center; color:gray;'>Erro ao carregar seus jogos.</p>";
     }
 }
 

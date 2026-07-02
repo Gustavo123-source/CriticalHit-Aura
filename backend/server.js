@@ -129,6 +129,28 @@ app.get("/jogos", (req, res) => {
     });
 });
 
+// jogos de um jogador específico ("Seus Jogos") //
+app.get("/jogos/player/:id_player", (req, res) => {
+    const { id_player } = req.params;
+
+    const sqlMeusJogos = `
+        SELECT jogos.*, player.nick 
+        FROM jogos 
+        INNER JOIN player ON jogos.id_player = player.id
+        WHERE jogos.id_player = ?
+    `;
+
+    db.query(sqlMeusJogos, [id_player], (erro, resultado) => {
+        if (erro) {
+            console.error(erro);
+            return res.status(500).json({
+                erro: "Erro ao buscar jogos do jogador."
+            });
+        }
+        res.json(resultado);
+    });
+});
+
 app.post("/jogos", (req, res) => {
 console.log(req.body);
     const novoJogo = {
