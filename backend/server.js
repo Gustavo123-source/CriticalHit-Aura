@@ -9,10 +9,12 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password:"",
-    database: "CriticalHit"
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER ||"root",
+    password: process.env.DB_PASSWORD || "",
+    database: process.env.DB_NAME ||   "CriticalHit",
+    port : process.env.DB_PORT || 3306,
+    ssl: process.env.DB_HOST ? { rejectUnauthorized:false} : null
 });
 
 //sql funcionando//
@@ -23,7 +25,34 @@ db.connect((erro) =>{
         return;
     }
     console.log("Conectado com sucesso");
-})
+db.query(`
+CREATE TABLE IF NOT EXISTS player (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(50) NOT NULL,
+    nick VARCHAR(30) NOT NULL,
+    nascimento DATE NOT NULL,
+    senha VARCHAR(30) NOT NULL
+)
+`);
+
+db.query(`
+CREATE TABLE IF NOT EXISTS jogos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(20) NOT NULL,
+    capa VARCHAR(255) NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    id_player INT NOT NULL,
+    FOREIGN KEY (id_player) REFERENCES player(id)
+)
+`);
+     db.query(criarTabelaSQL, (erroTabela) =>{
+        if (erroTabela) {
+            console.log("Erro de verificação ou criação da tabela", erroTabela);
+        } else {
+            console.log("Tabela Pronto para uso")
+        }
+     })
+});
 
 //api funcionar//
 app.get("/", (req, res) => {
@@ -286,7 +315,7 @@ app.delete("/jogos/player/:id_player/:titulo", (req, res) => {
 });
 
 //deixa no final prfv!//servidor rodar//
-app.listen(3000, () => {
-    console.log("Servidor rodando em:");
-    console.log("http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
