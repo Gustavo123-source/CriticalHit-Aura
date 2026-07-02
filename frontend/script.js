@@ -466,3 +466,21 @@ async function dadosPlayer() {
 }
 
 //teste de música//
+
+const audio = document.getElementById("IndieSong");
+const disco = document.getElementById("disco");
+
+disco.addEventListener("click", () => {
+    if (audio.paused) {
+        audio.play();
+        disco.classList.add("tocando");
+    } else {
+        audio.pause();
+        disco.classList.remove("tocando");
+    }
+});
+
+// Se a música terminar
+audio.addEventListener("ended", () => {
+    disco.classList.remove("tocando");
+});
