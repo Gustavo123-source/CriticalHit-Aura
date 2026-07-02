@@ -18,40 +18,47 @@ const db = mysql.createConnection({
 });
 
 //sql funcionando//
-db.connect((erro) =>{
-    if(erro) {
+db.connect((erro) => {
+    if (erro) {
         console.log("Erro ao conectar");
         console.log(erro);
         return;
     }
-    console.log("Conectado com sucesso");
-db.query(`
-CREATE TABLE IF NOT EXISTS player (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(50) NOT NULL,
-    nick VARCHAR(30) NOT NULL,
-    nascimento DATE NOT NULL,
-    senha VARCHAR(30) NOT NULL
-)
-`);
 
-db.query(`
-CREATE TABLE IF NOT EXISTS jogos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(20) NOT NULL,
-    capa VARCHAR(255) NOT NULL,
-    url VARCHAR(255) NOT NULL,
-    id_player INT NOT NULL,
-    FOREIGN KEY (id_player) REFERENCES player(id)
-)
-`);
-     db.query(criarTabelaSQL, (erroTabela) =>{
+    console.log("Conectado com sucesso");
+
+    db.query(`
+        CREATE TABLE IF NOT EXISTS player (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            email VARCHAR(50) NOT NULL,
+            nick VARCHAR(30) NOT NULL,
+            nascimento DATE NOT NULL,
+            senha VARCHAR(30) NOT NULL
+        )
+    `, (erroTabela) => {
         if (erroTabela) {
-            console.log("Erro de verificação ou criação da tabela", erroTabela);
+            console.log("Erro ao criar tabela player:", erroTabela);
         } else {
-            console.log("Tabela Pronto para uso")
+            console.log("Tabela player pronta.");
         }
-     })
+    });
+
+    db.query(`
+        CREATE TABLE IF NOT EXISTS jogos (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            titulo VARCHAR(20) NOT NULL,
+            capa VARCHAR(255) NOT NULL,
+            url VARCHAR(255) NOT NULL,
+            id_player INT NOT NULL,
+            FOREIGN KEY (id_player) REFERENCES player(id)
+        )
+    `, (erroTabela) => {
+        if (erroTabela) {
+            console.log("Erro ao criar tabela jogos:", erroTabela);
+        } else {
+            console.log("Tabela jogos pronta.");
+        }
+    });
 });
 
 //api funcionar//
