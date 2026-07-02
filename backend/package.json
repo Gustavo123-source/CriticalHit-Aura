@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mysql2": "^3.22.5"
   },
   "scripts": {
     "start": "node server.js"
@@ -9,7 +10,6 @@
   "name": "critical-hit-ultimate",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "author": "",
   "license": "ISC",
   "description": ""
