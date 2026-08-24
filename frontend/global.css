@@ -2,45 +2,69 @@
    CORES, VARIÁVEIS E TRANSICÕES GLOBAIS
    ========================================================================== */
 :root {
-    --bg-color: #f4f4f9;
-    --text-color: #333;
-    --nav-color: #285171;
-    --secondary-color: #33658A;
-    --accent-color: #84aec5;
-    --card-bg: aliceblue;
-    --card-text: #285171;
-    --border-color: #285171;
+    --bg-color: #f1f6f1;
+    --text-color: #24352a;
+
+    --nav-color: #3f624c;
+    --secondary-color: #6f9b7d;
+    --accent-color: #9bc7a8;
+
+    --card-bg: #ffffff;
+    --card-text: #3f624c;
+
+    --border-color: #a8c9b1;
+
     --input-bg: #ffffff;
-    --input-text: #333333;
-    --info-bg: #33658A;
+    --input-text: #24352a;
+
+    --info-bg: #6f9b7d;
     --info-card-bg: #ffffff;
     --info-text: #ffffff;
-    --btn-bg: #285171;
+
+    --btn-bg: #5f8f70;
     --btn-text: #ffffff;
-    --Tag-color: #84aec5;
+
+    --Tag-color: #9bc7a8;
+
     --container-bg: #ffffff;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 html.dark-mode {
-    --Tag-color: #ffffff;
-    --bg-color: #1f3347;
-    --text-color: #e8f1f7;
-    --nav-color: #264c69;
-    --secondary-color: #25577b;
-    --accent-color: #84aec5;
-    --card-bg: #22384b;
-    --card-text: #e8f1f7;
-    --border-color: #84aec5;
-    --input-bg: #1c2d3a;
+    --Tag-color: #a9d6b5;
+
+    --bg-color: #121b15;
+    --text-color: #e5f0e7;
+
+    --nav-color: #0b120e;
+    --secondary-color: #365541;
+    --accent-color: #82b890;
+
+    --card-bg: #19261d;
+    --card-text: #e5f0e7;
+
+    --border-color: #4c7157;
+
+    --input-bg: #111912;
     --input-text: #ffffff;
-    --info-bg: #15364d;
-    --info-card-bg: #1c2d3a;
-    --info-text: #e8f1f7;
-    --btn-bg: #84aec5;
-    --btn-text: #152331;
-    --container-bg: #22384b;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+    --info-bg: #294634;
+    --info-card-bg: #203025;
+    --info-text: #e5f0e7;
+
+    --btn-bg: #82b890;
+    --btn-text: #102016;
+
+    --container-bg: #19261d;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 body {
@@ -51,6 +75,10 @@ body {
     padding: 0;
     transition: background-color 0.3s ease, color 0.3s ease;
 }  
+
+html {
+    box-sizing: border-box;
+}
 
 /* ==========================================================================
    1. FONTES & DECLARAÇÕES
@@ -64,14 +92,17 @@ body {
    2. CONFIGURAÇÕES GERAIS (RESET & BASE)
    ========================================================================== */
 header { font-size: larger; }
+
 h3 { font-family: f1; }
+
 h4 { font-family: f2; }
+
 input, select, textarea {
     font-family: f3;
     background-color: var(--input-bg);
     color: var(--input-text);
 }
-::placeholder { color: #84aec5; }
+::placeholder { color: var(--border-color); }
 
 /* ==========================================================================
    3. LINKS & NAVEGAÇÃO (NAV BAR & HEADER)
@@ -103,7 +134,7 @@ nav {
     transition: 300ms ease;
 }
 .aDoNav:hover::after { transform: scaleX(1); }
-.aDoNav:hover { color: #5399be; }
+.aDoNav:hover { color: var(--Tag-color); }
 .informações {
     display: flex;
     flex-direction: row;

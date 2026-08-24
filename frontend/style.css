@@ -2,13 +2,13 @@
 
 /* Links Padrão */
 .enterL {
-    color: #8ebed7;
+    color: var(--Tag-color);
     text-decoration: none;
     transition: color 0.5s ease;
 }
 
 .enterL:hover {
-    color: rgb(0, 102, 255);
+    color: rgb(49, 204, 90);
 }
 
 /* ==========================================================================
@@ -26,7 +26,7 @@
    ========================================================================== */
 /* Estilo base reaproveitável para os botões de Início e Cadastro */
 #Binicio, #Bcadastrar {
-    background-color:  #33658A;
+    background-color:  var(--btn-bg);
     color: white;
     border-radius: 3px;
     border: none;
@@ -42,7 +42,7 @@
 
 /* Outros Botões */
 #botaoconfp {
-    background-color: #33658A;
+    background-color: var(--btn-bg);
     color: white;
     border-radius: 5px;
     border: none;
@@ -58,7 +58,7 @@
 }
 
 #botaoat, #idPublicar {
-    background-color: #33658A;
+    background-color: var(--btn-bg);
     color: white;
     border-radius: 15px;
     border: none;
@@ -69,7 +69,7 @@
 }
 
 #idPublicar {
-    background-color: #285171;
+    background-color: var(--btn-bg);
 }
 
 #botaoat:hover, #idPublicar:hover {
@@ -269,7 +269,7 @@ background-color: var(--secondary-color);
 
 
 .botaoEditar{
-    background-color: #33658A;
+    background-color: var(--btn-bg);
     color: white;
     border-radius: 15px;
     border: none;
@@ -298,16 +298,16 @@ background-color: var(--secondary-color);
     display:flex;
     flex-direction:column;
     max-width: 30%;
-    border:3px solid #1f3347;
+    border:3px solid var(--border-color);
     border-radius:15px;
     padding:15px;
     color:white;
-    background-color:#285171;
+    background-color:var(--secondary-color);
     font-family:f1;
 }
 .tituloDosTermos {
     text-decoration:underline;
-    color:#8ebed7;
+    color:var(--nav-color);
 }
 .fotosSamurai{
     width:50%
@@ -328,7 +328,7 @@ background-color: var(--secondary-color);
 .pDestacado {
     margin: bottom 0.2%;
     text-decoration:underline;
-    color:#3b77a2;
+    color:var(--text-color);
 }
 
 #configItens {
@@ -364,7 +364,7 @@ background-color: var(--secondary-color);
     color-scheme: var(--btn-bg);}
 
     .AccountDelete {
-    background-color:#22384b;
+    background-color:var(--btn-bg);
     padding:1%;
     color:white;
     font-family:f1;
@@ -410,14 +410,16 @@ background-color: var(--secondary-color);
     padding-left:15%;
 }
 
-
+#pesquisar::placeholder {
+    color: var(--border-color);
+}
 
 #pesquisar {
     padding:7%;
     padding-left:13%;
     width:100%;
     border-radius:15px;
-    border:#6b899b solid 2px;
+    border:var(--border-color) solid 2px;
     transition: all 0.5s;
 }
 
@@ -459,8 +461,8 @@ transform: scale(1.05);
         }
  
         .cardContato:hover {
-            transform: scale(1.04) translateY(-3px);
-            box-shadow: 0 8px 24px rgba(40, 81, 113, 0.25);
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 8px 24px var(--secondary-color);
         }
  
         .iconeContato {
@@ -511,163 +513,40 @@ transform: scale(1.05);
             margin: 8px 0;
         }
 
+/*card ao redor dos jogos*/
 
-    /*Teste game card*/
-         #paginaDeJogos{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content:center;
-}
-
-.aDosJogos{
-    position: relative;
-    overflow: visible;
-
-    text-decoration:none;
-    color:#222;
-
-    width:220px;
-    min-height:260px;
-
-    background:#a6a6a6;
-
-    border-radius:10px;
-    border:2px solid #969696;
-
-    padding:18px 14px 15px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
-    box-shadow:
-        inset 0 2px 2px rgba(255,255,255,.7),
-        inset 0 -4px 6px rgba(0,0,0,.18),
-        0 8px 18px rgba(0,0,0,.25);
-
-    transition:.2s;
-}
-
-.aDosJogos:hover{
-    transform: perspective(700px) rotateX(var(--ry)) rotateY(var(--rx)) scale(1.03);
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.45),
-        0 0 18px rgba(103,193,245,.18);
-}
-
-.fotoDoJogo{
-    margin-top:65px;
-    width:210px;
-    height:165px;
-    object-fit:cover;
-    background:white;
-    border:5px solid #969696; border-radius: 5px;
-
-    box-shadow:
-        inset 0 0 5px rgba(0,0,0,.2);
-
-    transition:.2s;
-}
-
-
-.aDosJogos:hover{
-    transform:
-        perspective(700px)
-        rotateX(var(--ry))
-        rotateY(var(--rx))
-        translateY(-6px)
-        scale(1.02);
-
-    box-shadow:
-        inset 0 2px 2px rgba(255,255,255,.7),
-        inset 0 -4px 6px rgba(0,0,0,.18),
-        0 18px 35px rgba(0,0,0,.35);
-}
-
-.aDosJogos::before{
-    content:attr(data-criador);
-
+.aDosJogos:before {
+    content: attr(data-criador);
     position:absolute;
-
-    top:15px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:150px;
-    height:48px;
-
-    background:#ababab;
-
-    border-radius:30px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#666;
-    font-weight:bold;
-    font-size:15px;
-
-        box-shadow:
-        inset 0 2px 2px rgba(255,255,255,.5),
-        inset 0 -2px 3px rgba(0,0,0,.2);
+    margin: 265px 0 0 5px;
+    color: var();
 }
 
-.aDosJogos:hover::before{
-    opacity:1;
+.aDosJogos {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: var(--card-bg);
+    padding: 5%;
+    margin: 3%;
+    width: 280px;
+    height: 280px;
+    text-decoration: none;
+    color: var(--card-text);
+    border: 3px solid var(--border-color);
+    border-radius: 5px;
+
 }
 
-
-.aDosJogos::after{
-    content:"";
-
-    position:absolute;
-
-    top:18px;
-    left:0;
-
-    width:100%;
-    height:28px;
-
-    background:
-        linear-gradient(#7d7d7d,#7d7d7d) left 8px top/25px 3px no-repeat,
-        linear-gradient(#7d7d7d,#7d7d7d) left 8px center/25px 3px no-repeat,
-        linear-gradient(#7d7d7d,#7d7d7d) left 8px bottom/25px 3px no-repeat,
-
-        linear-gradient(#7d7d7d,#7d7d7d) right 8px top/25px 3px no-repeat,
-        linear-gradient(#7d7d7d,#7d7d7d) right 8px center/25px 3px no-repeat,
-        linear-gradient(#7d7d7d,#7d7d7d) right 8px bottom/25px 3px no-repeat;
+.fotoDoJogo {
+    width: 280px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
-.aDosJogos:hover::after{
-    opacity:1;
-}
-
-.aDosJogos h3{
-
-  font-family:f3;
-  font-size:25px;
- margin: auto 0 10px;
-    text-align:center;
-    color:#474747;
-}
-
-.aDosJogos h3::before{
-
-    content:"";
-
-    display:block;
-
-    width:0;
-    height:0;
-    margin:0 auto 14px;
-
-    border-left:11px solid transparent;
-    border-right:11px solid transparent;
-    border-top:12px solid #9a9a9a;
-    
+#paginaDeJogos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 #ConfigSettings{
