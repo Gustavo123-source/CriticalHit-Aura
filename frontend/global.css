@@ -1,3 +1,14 @@
+
+/*
+
+VALORES DESABILITADOS PARA A RESPONSIVIDADE:
+
+*/
+
+.explorar {
+    display: none;
+}
+
 /* ==========================================================================
    CORES, VARIÁVEIS E TRANSICÕES GLOBAIS
    ========================================================================== */
@@ -76,9 +87,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }  
 
-html {
-    box-sizing: border-box;
-}
 
 /* ==========================================================================
    1. FONTES & DECLARAÇÕES
