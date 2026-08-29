@@ -724,6 +724,10 @@ transition: all 0.3s ease;
     z-index: 1000;
 }
 
+#idPublicar2 {
+    display: none;
+}
+
 @media (max-width: 480px) {
 
     /* inicio.html */
@@ -790,6 +794,43 @@ transition: all 0.3s ease;
 
     /* enviar.html */
 
+    #formEnviar {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
 
+    .inputJG {
+        width: 97%;
+        padding: 1%;
+    }
+
+    #idPublicar {
+        display: none;
+    }
+
+    #idPublicar2 {
+        display: flex;
+        border: none;
+        transition: 100ms;
+        cursor: pointer;
+        background: none;
+        justify-content: end;
+        margin-right: 9%;
+        background-color: var(--btn-bg);
+        color: white;
+        font-family: f3;
+        padding:2% 6%;
+        font-size: larger;
+        border-radius: 15px;
+    }
+
+    #headerDoForm {
+        font-size: xx-small;
+    }
+
+    .cardContato {
+        width: 80%;
+    }
 
 }
