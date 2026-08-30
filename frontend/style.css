@@ -833,4 +833,14 @@ transition: all 0.3s ease;
         width: 80%;
     }
 
+    #secTermos {
+        width: 80vw;
+        max-width: 100%;
+    }
+
+    #tagTermos {
+        border-radius: 0 0 20px 20px;
+        margin: 0 0 10px 0;
+    }
+
 }
