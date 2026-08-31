@@ -149,7 +149,6 @@ async function cadastro(event) {
         return;
     }
     const newPlayer = {email, nick, nascimento, senha}
-    
 
     try {
         console.log(newPlayer)
@@ -167,9 +166,6 @@ if (!resposta.ok) {
     alert(JSON.stringify(dados));
     return;
 }
-
-localStorage.setItem("id_player", dados.id);
-
 localStorage.setItem("id_player", dados.id);
 localStorage.setItem("nick", dados.nick);
 alert("Você foi cadastrado com sucesso!");
@@ -181,7 +177,7 @@ catch(erro) {
         console.log(erro);
     }
 }
-            //função para o login//
+         //função para o login//
 async function login(event) {
     event.preventDefault();
 
@@ -214,10 +210,6 @@ async function login(event) {
         alert("Erro ao conectar ao servidor.");
     }
 }
-
-
-
-
 
 
 async function JogoPost(event) {
@@ -303,26 +295,6 @@ async function carregarMeusJogos() {
                </a>
         `).join("");
 
-        document.querySelectorAll("#seusjogos .aDosJogos").forEach(card => {
-            card.addEventListener("mousemove", e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty("--x", `${x}px`);
-                card.style.setProperty("--y", `${y}px`);
-
-                const rx = ((x / rect.width) - 0.5) * 10;
-                const ry = ((y / rect.height) - 0.5) * -10;
-                card.style.setProperty("--rx", `${rx}deg`);
-                card.style.setProperty("--ry", `${ry}deg`);
-            });
-
-            card.addEventListener("mouseleave", () => {
-                card.style.setProperty("--rx", "0deg");
-                card.style.setProperty("--ry", "0deg");
-            });
-        });
-
     } catch (erro) {
         console.error(erro);
         meusJogos.innerHTML = "<p style='text-align:center; color:gray;'>Erro ao carregar seus jogos.</p>";
@@ -348,38 +320,9 @@ async function carregarJogo() {
        paginaDeJogos.innerHTML = `
             <a href="enviar.html" class="aDosJogos" style="text-align:center" data-criador="Publique o seu jogo">
             <img src="fotos/CriarJogos+.png" alt="sla" style="width: 150px; height: 150px; margin-top: 95px;">
-        
-        
     </a>
 ` + html;
 
-document.querySelectorAll(".aDosJogos").forEach(card => {
-
-    card.addEventListener("mousemove", e => {
-
-        const rect = card.getBoundingClientRect();
-
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        card.style.setProperty("--x", `${x}px`);
-        card.style.setProperty("--y", `${y}px`);
-
-        // Inclinação
-
-        const rx = ((x / rect.width) - 0.5) * 10;
-        const ry = ((y / rect.height) - 0.5) * -10;
-
-        card.style.setProperty("--rx", `${rx}deg`);
-        card.style.setProperty("--ry", `${ry}deg`);
-    });
-
-    card.addEventListener("mouseleave", () => {
-        card.style.setProperty("--rx","0deg");
-        card.style.setProperty("--ry","0deg");
-    });
-
-});
     } catch (erro) {
         console.error(erro);
         paginaDeJogos.innerHTML = "<p>Erro ao carregar os jogos.</p>";
@@ -405,8 +348,6 @@ async function excluirConta() {
         const resposta = await fetch(`${API}/player/${id}`, {
             method: "DELETE"
         });
-
-        const dados = await resposta.json();
 
         if (!resposta.ok) {
             alert("Faça login primeiro!");
@@ -492,7 +433,6 @@ async function dadosPlayer() {
 
         dds.innerHTML = `
 <div class="infoItem">
-                <div class="infoItem">
                 <p class="pDestacado">
                     <strong style="font-family: f1;">
                         Nome de Usuário:
