@@ -465,6 +465,64 @@ async function dadosPlayer() {
     }
 }
 
+//Conteúdo Admin//
+
+async function aparecerEstatisticas() {
+    const infoAdminAcessado = document.getElementById("estatistica");
+    if (!infoAdminAcessado) 
+        return;
+    try {
+
+    } catch (erro) {
+        console.log("Não carregado ou problemas", erro)
+    }
+}
+
+//senha Admin//
+
+async function AdminAcesso(AdminCadastro) {
+    AdminCadastro.preventDefault();
+    const senha = document.getElementById("senha").value;
+
+    try {
+        const resposta = await fetch(`${API}/admin`,{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({senha})
+        });
+        const dados = await resposta.json();
+        if (!resposta.ok) {
+            alert(dados.erro);
+            return;
+        }
+        sessionStorage.setItem("adminConecta", "true");
+        verificar();
+    } catch(erro) {
+        console.log("Erro ao entrar na área", erro)
+    }
+}
+
+function verificar(){
+    const login = document.getElementById("login");
+    const infoAdmin = document.getElementById("infoAdmin")
+
+    if (!login || !infoAdmin);
+    if (sessionStorage.getItem("adminConecta") === "true") {
+        login.style.display = "none";
+        infoAdmin.style.display = "block";
+        aparecerEstatisticas();
+    } else {
+        login.style.display = "block";
+        infoAdmin.style.display = "none";
+    }
+}
+
+function logoutAdmin() {
+    sessionStorage.removeItem("admin_logado");
+    window.location.reload();
+}
+
+
 //teste de música//
 
 const audio = document.getElementById("IndieSong");
