@@ -398,18 +398,20 @@ background-color: var(--secondary-color);
 }
 
 .excluir {
-    background-color:#22384b;
+    background-color:var(--btn-bg);
     padding:1%;
-    color:white;
+    color:var(--text-color);
     font-family:f1;
-    border:#1b1b1b solid 2px;
+    border:white solid 2px;
     transition:all 0.2s;
-    margin-left:0.5%;
+}
 
-    position: fixed;
-    left: 260px;
-    bottom: 31px;
-    padding: 10px;
+#deleteJogos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 40px;
+    padding: 0 5% 0 5%;
+    gap: 5%;
 }
 
 .AccountDelete:hover{
@@ -717,10 +719,7 @@ transition: all 0.3s ease;
 }
 
 .delJogos{
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
-    padding: 10px;
+    
     z-index: 1000;
 }
 
